@@ -1,0 +1,131 @@
+:root {
+    --bg: #030303;
+    --card-bg: #0c0c0c;
+    --accent: #00ffaa;
+    --text: #ffffff;
+    --dim: #555555;
+    --nav-height: 80px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'JetBrains Mono', monospace; }
+
+body { 
+    background: var(--bg); 
+    color: var(--text); 
+    overflow-x: hidden; 
+    scroll-behavior: smooth; 
+}
+
+/* Hero Section - The Centering Logic */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh; 
+    display: flex;
+    justify-content: center; /* Horizontal Center */
+    align-items: center;     /* Vertical Center */
+    padding-top: var(--nav-height);
+    overflow: hidden;
+}
+
+.glow-sphere {
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    width: 600px; 
+    height: 600px; 
+    background: var(--accent);
+    filter: blur(180px); 
+    opacity: 0.08; 
+    z-index: -1;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+    padding: 0 1rem;
+}
+
+.glitch-title { 
+    font-size: clamp(2rem, 10vw, 5.5rem); 
+    font-weight: 900; 
+    letter-spacing: -3px; 
+    margin-bottom: 2.5rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* Navbar */
+.navbar { 
+    position: fixed; top: 0; width: 100%; z-index: 1000; 
+    height: var(--nav-height);
+    display: flex; align-items: center;
+    background: rgba(3,3,3,0.8); backdrop-filter: blur(15px); 
+    border-bottom: 1px solid #111; 
+}
+.nav-container { width: 100%; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; padding: 0 2rem; }
+.logo { font-weight: 900; font-size: 1.3rem; }
+.logo span { color: var(--accent); }
+.nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
+.nav-links a { text-decoration: none; color: var(--dim); font-size: 0.8rem; transition: 0.3s; }
+.nav-links a:hover { color: var(--accent); }
+.nav-btn { color: var(--accent) !important; border: 1px solid var(--accent); padding: 6px 18px; border-radius: 2px; }
+
+/* Terminal Window */
+.terminal-container {
+    width: 100%;
+    max-width: 680px; 
+    background: #000; 
+    border: 1px solid #222;
+    border-radius: 10px; 
+    overflow: hidden; 
+    box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+}
+.terminal-bar { 
+    background: #111; 
+    padding: 12px 18px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    border-bottom: 1px solid #222; 
+}
+.dots { display: flex; gap: 8px; }
+.dots span { width: 10px; height: 10px; border-radius: 50%; }
+.d1 { background: #ff5f56; } .d2 { background: #ffbd2e; } .d3 { background: #27c93f; }
+.term-name { font-size: 0.7rem; color: var(--dim); }
+
+.terminal-output { 
+    padding: 25px; 
+    color: var(--accent); 
+    font-size: 0.95rem; 
+    min-height: 200px; 
+    line-height: 1.6;
+    white-space: pre-wrap; /* Keeps formatting and newlines */
+}
+.cursor-block { animation: blink 1s infinite; }
+
+/* Content Sections */
+.section { padding: 100px 2rem; max-width: 1100px; margin: 0 auto; }
+.label { color: var(--dim); font-size: 0.75rem; margin-bottom: 40px; letter-spacing: 4px; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+
+.card {
+    background: var(--card-bg); padding: 40px; border-radius: 8px; border: 1px solid #1a1a1a;
+    transition: 0.4s;
+}
+.card:hover { border-color: var(--accent); transform: translateY(-5px); }
+.card h3 { margin-bottom: 1rem; }
+.card p { color: var(--dim); line-height: 1.5; }
+
+.pill-container { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+.pill { border: 1px solid #222; padding: 10px 20px; border-radius: 50px; font-size: 0.85rem; }
+
+footer { text-align: center; padding: 60px 0; color: #333; font-size: 0.8rem; border-top: 1px solid #111; }
+
+@keyframes blink { 50% { opacity: 0; } }
+
